@@ -44,7 +44,7 @@ solc nameOfTheFile.sol --ir > nameOfTheDestinationFile.yul
 
 5. Use the [verbatim](https://docs.soliditylang.org/en/v0.8.17/yul.html#verbatim) to input the bytecode into your desired function.
 
-Here is an example: todo: ADD LINK
+Here is an example: https://github.com/Kuly14/mnemonic/blob/main/box.yul#L311
 
 6. Compile the .yul file to bytecode. You can do so like this:
 

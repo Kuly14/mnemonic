@@ -53,7 +53,15 @@ pub fn get_bytecode(content: String) -> Result<String> {
     let mut bytecode = String::from("0x");
 
     bytes.iter().for_each(|byte| {
-        let fixed_byte = byte.replace("0x", "");
+        let mut fixed_byte = byte.to_string();
+
+        if byte.contains("0x") {
+            fixed_byte = dict::add_push(byte);
+            if fixed_byte.trim() == String::from("Wrong length") {
+                println!("Wrong hex input");
+                process::exit(1);
+            }
+        }
         bytecode.push_str(&fixed_byte);
     });
 

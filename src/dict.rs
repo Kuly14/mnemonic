@@ -569,3 +569,131 @@ pub fn check_code(line: &str) -> &str {
 
     line
 }
+
+pub fn add_push(byte: &String) -> String {
+    let fixed_byte = byte.replace("0x", "");
+    let length = fixed_byte.len();
+
+    if length == 2 {
+        return format!("60{}", fixed_byte);
+    }
+
+    if length == 4 {
+        return format!("61{}", fixed_byte);
+    }
+
+    if length == 6 {
+        return format!("62{}", fixed_byte);
+    }
+
+    if length == 8 {
+        return format!("63{}", fixed_byte);
+    }
+
+    if length == 10 {
+        return format!("64{}", fixed_byte);
+    }
+
+    if length == 12 {
+        return format!("65{}", fixed_byte);
+    }
+
+    if length == 14 {
+        return format!("66{}", fixed_byte);
+    }
+
+    if length == 16 {
+        return format!("67{}", fixed_byte);
+    }
+
+    if length == 18 {
+        return format!("68{}", fixed_byte);
+    }
+
+    if length == 20 {
+        return format!("69{}", fixed_byte);
+    }
+
+    if length == 22 {
+        return format!("6a{}", fixed_byte);
+    }
+
+    if length == 24 {
+        return format!("6b{}", fixed_byte);
+    }
+
+    if length == 26 {
+        return format!("6c{}", fixed_byte);
+    }
+
+    if length == 28 {
+        return format!("6d{}", fixed_byte);
+    }
+
+    if length == 30 {
+        return format!("6e{}", fixed_byte);
+    }
+
+    if length == 32 {
+        return format!("6f{}", fixed_byte);
+    }
+
+    if length == 34 {
+        return format!("70{}", fixed_byte);
+    }
+
+    if length == 36 {
+        return format!("71{}", fixed_byte);
+
+    }
+    if length == 38 {
+        return format!("72{}", fixed_byte);
+
+    }
+    if length == 40 {
+        return format!("73{}", fixed_byte);
+    }
+    if length == 42 {
+        return format!("74{}", fixed_byte);
+    }
+    if length == 44 {
+        return format!("75{}", fixed_byte);
+    }
+    
+    if length == 46 {
+        return format!("76{}", fixed_byte);
+    }
+
+    if length == 48 {
+        return format!("77{}", fixed_byte);
+    }
+    if length == 50 {
+        return format!("78{}", fixed_byte);
+    }
+    if length == 52 {
+        return format!("79{}", fixed_byte);
+    }
+
+    if length == 54 {
+        return format!("7a{}", fixed_byte);
+    }
+    if length == 56 {
+        return format!("7b{}", fixed_byte);
+    }
+
+    if length == 58 {
+        return format!("7c{}", fixed_byte);
+    }
+
+    if length == 60 {
+        return format!("7d{}", fixed_byte);
+    }
+    if length == 62 {
+        return format!("7e{}", fixed_byte);
+    }
+    if length == 64 {
+        return format!("7f{}", fixed_byte);
+    }
+
+    String::from("Wrong length")
+}

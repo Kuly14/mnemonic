@@ -644,11 +644,9 @@ pub fn add_push(byte: &String) -> String {
 
     if length == 36 {
         return format!("71{}", fixed_byte);
-
     }
     if length == 38 {
         return format!("72{}", fixed_byte);
-
     }
     if length == 40 {
         return format!("73{}", fixed_byte);
@@ -659,7 +657,7 @@ pub fn add_push(byte: &String) -> String {
     if length == 44 {
         return format!("75{}", fixed_byte);
     }
-    
+
     if length == 46 {
         return format!("76{}", fixed_byte);
     }

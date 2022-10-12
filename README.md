@@ -55,6 +55,7 @@ solc --strict-assembly nameofTheFile.yul --bin
 7. Deploy the bytecode
 
 I created an example repo that shows how to do this: https://github.com/Kuly14/deployBytecode 
+
 8. Write a test for every little thing.
 
 Since we are messing with the stack, it is essential to test everything.

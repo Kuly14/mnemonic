@@ -22,10 +22,22 @@ That's why I wrote this helpful tool.
 2. Write your desired function with pure opcodes.
 
 ```rust
-push1 0x04
+0x04
 calldataload
-push1 0x00
+0x00
 mstore
+```
+
+You don't have to use the push opcodes the compiler will add them for you every time you start with 0x.
+
+```
+0x00
+```
+
+Is equal to:
+
+```rust
+push1 0x00
 ```
 
 3. Run `mnemonic` and input path to the file as an argument like this:
@@ -54,7 +66,7 @@ solc --strict-assembly nameofTheFile.yul --bin
 
 7. Deploy the bytecode
 
-I created an example repo that shows how to do this: https://github.com/Kuly14/deployBytecode 
+I created an example repo that shows how to do this: https://github.com/Kuly14/deployBytecode
 
 8. Write a test for every little thing.
 

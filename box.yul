@@ -1,7 +1,7 @@
 /// @use-src 0:"box.sol"
 object "Box_28" {
     code {
-        /// @src 0:25:215  "contract Box {..."
+        /// @src 0:57:247  "contract Box {..."
         mstore(64, memoryguard(128))
         if callvalue() { revert_error_ca66f745a3ce8ff40e2ccaf1ad45db7774001b90d25810abd9040049be7bf4bb() }
 
@@ -64,26 +64,26 @@ object "Box_28" {
         }
 
         /// @ast-id 11
-        /// @src 0:64:103  "constructor() {..."
+        /// @src 0:96:135  "constructor() {..."
         function constructor_Box_28() {
 
-            /// @src 0:64:103  "constructor() {..."
+            /// @src 0:96:135  "constructor() {..."
 
-            /// @src 0:92:94  "10"
+            /// @src 0:124:126  "10"
             let expr_7 := 0x0a
-            /// @src 0:88:94  "x = 10"
+            /// @src 0:120:126  "x = 10"
             let _2 := convert_t_rational_10_by_1_to_t_uint256(expr_7)
             update_storage_value_offset_0t_uint256_to_t_uint256(0x00, _2)
             let expr_8 := _2
 
         }
-        /// @src 0:25:215  "contract Box {..."
+        /// @src 0:57:247  "contract Box {..."
 
     }
     /// @use-src 0:"box.sol"
     object "Box_28_deployed" {
         code {
-            /// @src 0:25:215  "contract Box {..."
+            /// @src 0:57:247  "contract Box {..."
             mstore(64, memoryguard(128))
 
             if iszero(lt(calldatasize(), 4))
@@ -162,7 +162,7 @@ object "Box_28" {
             }
 
             /// @ast-id 3
-            /// @src 0:44:57  "uint public x"
+            /// @src 0:76:89  "uint public x"
             function getter_fun_x_3() -> ret {
 
                 let slot := 0
@@ -171,7 +171,7 @@ object "Box_28" {
                 ret := read_from_storage_split_dynamic_t_uint256(slot, offset)
 
             }
-            /// @src 0:25:215  "contract Box {..."
+            /// @src 0:57:247  "contract Box {..."
 
             function cleanup_t_uint256(value) -> cleaned {
                 cleaned := value
@@ -287,34 +287,37 @@ object "Box_28" {
             }
 
             /// @ast-id 21
-            /// @src 0:109:163  "function store(uint _x) public {..."
+            /// @src 0:141:195  "function store(uint _x) public {..."
             function fun_store_21(var__x_13) {
 
-                /// @src 0:154:156  "_x"
+                /// @src 0:186:188  "_x"
                 let _1 := var__x_13
                 let expr_17 := _1
-                /// @src 0:150:156  "x = _x"
+                /// @src 0:182:188  "x = _x"
                 update_storage_value_offset_0t_uint256_to_t_uint256(0x00, expr_17)
                 let expr_18 := expr_17
 
             }
-            /// @src 0:25:215  "contract Box {..."
+            /// @src 0:57:247  "contract Box {..."
 
             function zero_value_for_split_t_uint256() -> ret {
                 ret := 0
             }
 
             /// @ast-id 27
-            /// @src 0:169:213  "function get() public view returns (uint) {}"
+            /// @src 0:201:245  "function get() public view returns (uint) {}"
             function fun_get_27() -> var__24 {
+                /// @src 0:237:241  "uint"
+                let zero_t_uint256_2 := zero_value_for_split_t_uint256()
+                var__24 := zero_t_uint256_2
 
                 verbatim_0i_0o(hex"60005460005260206000f3")
             }
-            /// @src 0:25:215  "contract Box {..."
+            /// @src 0:57:247  "contract Box {..."
 
         }
 
-        data ".metadata" hex"a264697066735822122079339771f5b30ef1c63aff8aa334773847949c7a2c23bd7bff2fd3bbe24ce61d64736f6c63430008110033"
+        data ".metadata" hex"a2646970667358221220689264ccb29721a85b8989f35cf7ce5783e1c7b16163bfcea65be40c65761b9464736f6c63430008110033"
     }
 
 }

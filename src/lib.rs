@@ -50,7 +50,7 @@ pub fn get_bytecode(content: String) -> Result<String> {
         })
         .collect::<Vec<String>>();
 
-    let mut bytecode = String::from("0x");
+    let mut bytecode = String::new();
 
     bytes.iter().for_each(|byte| {
         let mut fixed_byte = byte.to_string();

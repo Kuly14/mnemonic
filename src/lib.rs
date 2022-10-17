@@ -161,7 +161,7 @@ mod tests {
         sha3 // hash them together to get storage slot for the mapping
         0xb5d85CBf7cB3EE0D56b3bB207D5Fc4B82f43F511 //another random address
         sstore
-        "
+        ",
         );
 
         let bytecode = get_bytecode(content).unwrap();

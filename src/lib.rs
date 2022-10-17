@@ -145,7 +145,7 @@ mod tests {
 
     #[test]
     pub fn test_get_bytecode_more_complex() {
-        // This bytecode is essentialy idetical to:
+        // This bytecode is essentialy idnetical to:
         // mapping(address => address) map;
         // function store() public {
         //     map[0x4675C7e5BaAFBFFbca748158bEcBA61ef3b0a263] = 0xb5d85CBf7cB3EE0D56b3bB207D5Fc4B82f43F511;

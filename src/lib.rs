@@ -80,15 +80,15 @@ pub fn get_bytecode(content: String) -> Result<String> {
     'outer: while let Some(line) = lines.next() {
         let words = line.split_whitespace().map(|word| word.to_lowercase());
 
-        for i in words {
-            if i.contains("//") {
+        for word in words {
+            if word.contains("//") {
                 continue 'outer;
             }
 
-            let bytecode = dict::check_code(&i);
+            let bytecode = dict::check_code(&word);
 
-            if !i.contains("0x") && bytecode.trim() == i.trim() {
-                return Err(anyhow::Error::new(InputError::UnknownOpcode(i)));
+            if !word.contains("0x") && bytecode.trim() == word.trim() {
+                return Err(anyhow::Error::new(InputError::UnknownOpcode(word)));
             }
 
             bytes.push(bytecode.to_string());

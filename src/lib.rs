@@ -49,19 +49,17 @@ pub fn check_extension(args: &Cli) -> Result<()> {
         false => (),
     };
 
+    let file_name = args.path.file_name().unwrap().to_str().unwrap().to_string();
+
     let extension = match args.path.extension() {
         Some(ext) => ext,
         None => {
-            return Err(anyhow::Error::new(InputError::WrongFile(
-                args.path.file_name().unwrap().to_str().unwrap().to_string(),
-            )))
+            return Err(anyhow::Error::new(InputError::WrongFile(file_name)));
         }
     };
 
     if extension != "mn" {
-        return Err(anyhow::Error::new(InputError::WrongFile(
-            args.path.file_name().unwrap().to_str().unwrap().to_string(),
-        )));
+        return Err(anyhow::Error::new(InputError::WrongFile(file_name)));
     }
 
     Ok(())

@@ -19,7 +19,6 @@ pub fn test_workflow() {
     )
     .unwrap();
 
-    // For some reason cargo r -- test.mn > test_bytecode.txt doesn't work
     let bytecode = Command::new("cargo")
         .args(["r", "--", "test.mn"])
         .output()

@@ -46,7 +46,7 @@ push1 0x00
 cargo run -- box.mn -p
 ```
 
-If you use `--print` or `-p` the compiler will print the bytecode to the terminal. Otherwise it will create <nameOfYourFile>.txt
+If you use `--print` or `-p` the compiler will print the bytecode to the terminal. Otherwise it will create `nameOfYourFile.txt`
 
 If you want to save the bytecode to a different file use `--destination` or `-d` and specify path to where you want to save the file. 
 

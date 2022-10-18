@@ -11,8 +11,16 @@ use std::{
 mod dict;
 
 #[derive(Parser)]
+#[clap(author, version, about, long_about = None)]
 pub struct Cli {
+    /// Path to your .mn file
     pub path: PathBuf,
+    /// Use -p if you want to print the bytecode to the terminal
+    #[clap(long, short, action)]
+    pub print: bool,
+    /// Use -d to specify where do you want to save the bytecode. If the file exists it will error
+    #[clap(long, short)]
+    pub destination: Option<PathBuf>,
 }
 
 #[derive(Debug)]
@@ -189,6 +197,8 @@ mod tests {
     pub fn test_is_directory() {
         let cli = Cli {
             path: PathBuf::from("./src"),
+            print: true,
+            destination: None,
         };
         check_extension(&cli).unwrap()
     }
@@ -198,6 +208,8 @@ mod tests {
     pub fn test_different_extension() {
         let cli = Cli {
             path: PathBuf::from("./box.sol"),
+            print: true,
+            destination: None,
         };
         check_extension(&cli).unwrap()
     }

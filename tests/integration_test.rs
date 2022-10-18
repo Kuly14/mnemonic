@@ -20,7 +20,7 @@ pub fn test_workflow() {
     .unwrap();
 
     let bytecode = Command::new("cargo")
-        .args(["r", "--", "test.mn"])
+        .args(["r", "--", "test.mn", "-p"])
         .output()
         .unwrap();
 

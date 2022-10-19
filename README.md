@@ -50,8 +50,6 @@ If you use `--print` or `-p` the compiler will print the bytecode to the termina
 
 If you want to save the bytecode to a different file use `--destination` or `-d` and specify path to where you want to save the file. 
 
-This will print the desired output to the terminal.
-
 4. Write your solidity contract and compile it down to yul like this:
 
 ```bash

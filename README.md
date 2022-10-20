@@ -76,6 +76,8 @@ Since we are messing with the stack, it is essential to test everything.
 
 Have Fun!!!
 
+For in depth tutorial visit: https://medium.com/coinmonks/how-to-write-any-function-in-pure-opcodes-and-add-it-to-your-solidity-function-yul-verbatim-c1ce2760f7a5
+
 ## Disclaimer
 
 Don't use in production. Unsafe software.

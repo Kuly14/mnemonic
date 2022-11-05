@@ -1,445 +1,126 @@
-pub fn check_code(line: &str) -> &str {
-    if line == "stop" {
-        return "00";
+use std::collections::HashMap;
+
+pub struct Opcodes<'a> {
+    pub opcodes: HashMap<&'a str, &'a str>,
+}
+
+impl Opcodes<'_> {
+    pub fn new() -> Self {
+        let mut opcodes: HashMap<&str, &str> = HashMap::new();
+        opcodes.insert("stop", "00");
+        opcodes.insert("add", "01");
+        opcodes.insert("mul", "02");
+        opcodes.insert("sub", "03");
+        opcodes.insert("div", "04");
+        opcodes.insert("sdiv", "05");
+        opcodes.insert("mod", "06");
+        opcodes.insert("smod", "07");
+        opcodes.insert("addmod", "08");
+        opcodes.insert("mulmod", "09");
+        opcodes.insert("exp", "0a");
+        opcodes.insert("signextend", "0b");
+        opcodes.insert("lt", "10");
+        opcodes.insert("gt", "11");
+        opcodes.insert("slt", "12");
+        opcodes.insert("sgt", "13");
+        opcodes.insert("eq", "14");
+        opcodes.insert("iszero", "15");
+        opcodes.insert("and", "16");
+        opcodes.insert("or", "17");
+        opcodes.insert("xor", "18");
+        opcodes.insert("not", "19");
+        opcodes.insert("byte", "1a");
+        opcodes.insert("shl", "1b");
+        opcodes.insert("shr", "1c");
+        opcodes.insert("sar", "1d");
+        opcodes.insert("sha3", "20");
+        opcodes.insert("address", "30");
+        opcodes.insert("balance", "31");
+        opcodes.insert("origin", "32");
+        opcodes.insert("caller", "33");
+        opcodes.insert("callvalue", "34");
+        opcodes.insert("calldataload", "35");
+        opcodes.insert("calldatasize", "36");
+        opcodes.insert("calldatacopy", "37");
+        opcodes.insert("codesize", "38");
+        opcodes.insert("codecopy", "39");
+        opcodes.insert("gasprice", "3a");
+        opcodes.insert("extcodesize", "3b");
+        opcodes.insert("extcodecopy", "3c");
+        opcodes.insert("returndatasize", "3d");
+        opcodes.insert("returndatacopy", "3e");
+        opcodes.insert("extcodehash", "3f");
+        opcodes.insert("blockhash", "40");
+        opcodes.insert("coinbase", "41");
+        opcodes.insert("timestamp", "42");
+        opcodes.insert("number", "43");
+        opcodes.insert("difficulty", "44");
+        opcodes.insert("gaslimit", "45");
+        opcodes.insert("chainid", "46");
+        opcodes.insert("selfbalance", "47");
+        opcodes.insert("basefee", "48");
+        opcodes.insert("pop", "50");
+        opcodes.insert("mload", "51");
+        opcodes.insert("mstore", "52");
+        opcodes.insert("mstore8", "53");
+        opcodes.insert("sload", "54");
+        opcodes.insert("sstore", "55");
+        opcodes.insert("jump", "56");
+        opcodes.insert("jumpi", "57");
+        opcodes.insert("pc", "58");
+        opcodes.insert("msize", "59");
+        opcodes.insert("gas", "5a");
+        opcodes.insert("jumpdest", "5b");
+        opcodes.insert("dup1", "80");
+        opcodes.insert("dup2", "81");
+        opcodes.insert("dup3", "82");
+        opcodes.insert("dup4", "83");
+        opcodes.insert("dup5", "84");
+        opcodes.insert("dup6", "85");
+        opcodes.insert("dup7", "86");
+        opcodes.insert("dup8", "87");
+        opcodes.insert("dup9", "88");
+        opcodes.insert("dup10", "89");
+        opcodes.insert("dup11", "8a");
+        opcodes.insert("dup12", "8b");
+        opcodes.insert("dup13", "8c");
+        opcodes.insert("dup14", "8d");
+        opcodes.insert("dup15", "8e");
+        opcodes.insert("dup16", "8f");
+        opcodes.insert("swap1", "90");
+        opcodes.insert("swap2", "91");
+        opcodes.insert("swap3", "92");
+        opcodes.insert("swap4", "93");
+        opcodes.insert("swap5", "94");
+        opcodes.insert("swap6", "95");
+        opcodes.insert("swap7", "96");
+        opcodes.insert("swap8", "97");
+        opcodes.insert("swap9", "98");
+        opcodes.insert("swap10", "99");
+        opcodes.insert("swap11", "9a");
+        opcodes.insert("swap12", "9b");
+        opcodes.insert("swap13", "9c");
+        opcodes.insert("swap14", "9d");
+        opcodes.insert("swap15", "9e");
+        opcodes.insert("swap16", "9f");
+        opcodes.insert("log0", "a0");
+        opcodes.insert("log1", "a1");
+        opcodes.insert("log2", "a2");
+        opcodes.insert("log3", "a3");
+        opcodes.insert("log4", "a4");
+        opcodes.insert("create", "f0");
+        opcodes.insert("call", "f1");
+        opcodes.insert("callcode", "f2");
+        opcodes.insert("return", "f3");
+        opcodes.insert("delegatecall", "f4");
+        opcodes.insert("create2", "f5");
+        opcodes.insert("staticall", "fa");
+        opcodes.insert("revert", "fd");
+        opcodes.insert("invalid", "fe");
+        opcodes.insert("selfdestruct", "ff");
+
+        Self { opcodes }
     }
-
-    if line == "add" {
-        return "01";
-    }
-
-    if line == "mul" {
-        return "02";
-    }
-
-    if line == "sub" {
-        return "03";
-    }
-
-    if line == "div" {
-        return "04";
-    }
-
-    if line == "sdiv" {
-        return "05";
-    }
-
-    if line == "mod" {
-        return "06";
-    }
-
-    if line == "smod" {
-        return "07";
-    }
-
-    if line == "addmod" {
-        return "08";
-    }
-
-    if line == "mulmod" {
-        return "09";
-    }
-
-    if line == "exp" {
-        return "0a";
-    }
-
-    if line == "signextend" {
-        return "0b";
-    }
-
-    if line == "lt" {
-        return "10";
-    }
-
-    if line == "gt" {
-        return "11";
-    }
-
-    if line == "slt" {
-        return "12";
-    }
-
-    if line == "sgt" {
-        return "13";
-    }
-
-    if line == "eq" {
-        return "14";
-    }
-
-    if line == "iszero" {
-        return "15";
-    }
-
-    if line == "and" {
-        return "16";
-    }
-
-    if line == "or" {
-        return "17";
-    }
-
-    if line == "xor" {
-        return "18";
-    }
-
-    if line == "not" {
-        return "19";
-    }
-
-    if line == "byte" {
-        return "1a";
-    }
-
-    if line == "shl" {
-        return "1b";
-    }
-
-    if line == "shr" {
-        return "1c";
-    }
-
-    if line == "sar" {
-        return "1d";
-    }
-
-    if line == "sha3" {
-        return "20";
-    }
-
-    if line == "address" {
-        return "30";
-    }
-
-    if line == "balance" {
-        return "31";
-    }
-
-    if line == "origin" {
-        return "32";
-    }
-
-    if line == "caller" {
-        return "33";
-    }
-
-    if line == "callvalue" {
-        return "34";
-    }
-
-    if line == "calldataload" {
-        return "35";
-    }
-
-    if line == "calldatasize" {
-        return "36";
-    }
-
-    if line == "calldatacopy" {
-        return "37";
-    }
-
-    if line == "codesize" {
-        return "38";
-    }
-
-    if line == "codecopy" {
-        return "39";
-    }
-
-    if line == "gasprice" {
-        return "3a";
-    }
-
-    if line == "extcodesize" {
-        return "3b";
-    }
-
-    if line == "extcodecopy" {
-        return "3c";
-    }
-
-    if line == "returndatasize" {
-        return "3d";
-    }
-
-    if line == "returndatacopy" {
-        return "3e";
-    }
-
-    if line == "extcodehash" {
-        return "3f";
-    }
-
-    if line == "blockhash" {
-        return "40";
-    }
-
-    if line == "coinbase" {
-        return "41";
-    }
-
-    if line == "timestamp" {
-        return "42";
-    }
-
-    if line == "number" {
-        return "43";
-    }
-
-    if line == "difficulty" {
-        return "44";
-    }
-
-    if line == "gaslimit" {
-        return "45";
-    }
-
-    if line == "chainid" {
-        return "46";
-    }
-
-    if line == "selfbalance" {
-        return "47";
-    }
-
-    if line == "basefee" {
-        return "48";
-    }
-
-    if line == "pop" {
-        return "50";
-    }
-
-    if line == "mload" {
-        return "51";
-    }
-
-    if line == "mstore" {
-        return "52";
-    }
-
-    if line == "mstore8" {
-        return "53";
-    }
-
-    if line == "sload" {
-        return "54";
-    }
-
-    if line == "sstore" {
-        return "55";
-    }
-
-    if line == "jump" {
-        return "56";
-    }
-
-    if line == "jumpi" {
-        return "57";
-    }
-
-    if line == "pc" {
-        return "58";
-    }
-
-    if line == "msize" {
-        return "59";
-    }
-
-    if line == "gas" {
-        return "5a";
-    }
-
-    if line == "jumpdest" {
-        return "5b";
-    }
-
-    if line == "dup1" {
-        return "80";
-    }
-
-    if line == "dup2" {
-        return "81";
-    }
-
-    if line == "dup3" {
-        return "82";
-    }
-
-    if line == "dup4" {
-        return "83";
-    }
-
-    if line == "dup5" {
-        return "84";
-    }
-
-    if line == "dup6" {
-        return "85";
-    }
-
-    if line == "dup7" {
-        return "86";
-    }
-
-    if line == "dup8" {
-        return "87";
-    }
-
-    if line == "dup9" {
-        return "88";
-    }
-
-    if line == "dup10" {
-        return "89";
-    }
-
-    if line == "dup11" {
-        return "8a";
-    }
-
-    if line == "dup12" {
-        return "8b";
-    }
-
-    if line == "dup13" {
-        return "8c";
-    }
-
-    if line == "dup14" {
-        return "8d";
-    }
-
-    if line == "dup15" {
-        return "8e";
-    }
-
-    if line == "dup16" {
-        return "8f";
-    }
-
-    if line == "swap1" {
-        return "90";
-    }
-
-    if line == "swap2" {
-        return "91";
-    }
-
-    if line == "swap3" {
-        return "92";
-    }
-
-    if line == "swap4" {
-        return "93";
-    }
-
-    if line == "swap5" {
-        return "94";
-    }
-
-    if line == "swap6" {
-        return "95";
-    }
-
-    if line == "swap7" {
-        return "96";
-    }
-
-    if line == "swap8" {
-        return "97";
-    }
-
-    if line == "swap9" {
-        return "98";
-    }
-
-    if line == "swap10" {
-        return "99";
-    }
-
-    if line == "swap11" {
-        return "9a";
-    }
-
-    if line == "swap12" {
-        return "9b";
-    }
-
-    if line == "swap13" {
-        return "9c";
-    }
-
-    if line == "swap14" {
-        return "9d";
-    }
-
-    if line == "swap15" {
-        return "9e";
-    }
-
-    if line == "swap16" {
-        return "9f";
-    }
-
-    if line == "log0" {
-        return "a1";
-    }
-
-    if line == "log1" {
-        return "a2";
-    }
-
-    if line == "log2" {
-        return "a3";
-    }
-
-    if line == "log3" {
-        return "a4";
-    }
-
-    if line == "create" {
-        return "f0";
-    }
-
-    if line == "call" {
-        return "f1";
-    }
-
-    if line == "callcode" {
-        return "f2";
-    }
-
-    if line == "return" {
-        return "f3";
-    }
-
-    if line == "delegatecall" {
-        return "f4";
-    }
-
-    if line == "create2" {
-        return "f5";
-    }
-
-    if line == "staticall" {
-        return "fa";
-    }
-
-    if line == "revert" {
-        return "fd";
-    }
-
-    if line == "invalid" {
-        return "fe";
-    }
-
-    if line == "selfdestruct" {
-        return "ff";
-    }
-
-    line
 }
 
 pub fn add_push(byte: &String) -> String {
@@ -565,5 +246,5 @@ pub fn add_push(byte: &String) -> String {
         return format!("7f{}", fixed_byte);
     }
 
-    String::from("Wrong length")
+    String::from("404")
 }

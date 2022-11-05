@@ -26,7 +26,7 @@ fn main() -> Result<()> {
         file.write_all(bytecode.as_bytes())?;
 
         println!("Done...");
-        println!("Bytecode is save at {:#?}", file_path);
+        println!("Bytecode is saved at {:#?}", file_path);
     }
     Ok(())
 }

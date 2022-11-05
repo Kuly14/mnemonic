@@ -1,5 +1,6 @@
 use anyhow::{Context, Result};
 use clap::Parser;
+use dict::Opcodes;
 use std::{
     error::Error,
     fmt::{Display, Formatter},
@@ -81,7 +82,9 @@ pub fn read_file(path: &PathBuf) -> Result<String> {
 pub fn get_bytecode(content: String) -> Result<String> {
     let mut lines = content.lines();
 
-    let mut bytes: Vec<String> = Vec::new();
+    let opcodes_struct = Opcodes::new();
+
+    let mut bytecode_final = String::new();
 
     'outer: while let Some(line) = lines.next() {
         let words = line.split_whitespace().map(|word| word.to_lowercase());
@@ -91,31 +94,31 @@ pub fn get_bytecode(content: String) -> Result<String> {
                 continue 'outer;
             }
 
-            let bytecode = dict::check_code(&word);
+            let fixed_byte: String;
 
-            if !word.contains("0x") && bytecode.trim() == word.trim() {
-                return Err(anyhow::Error::new(InputError::UnknownOpcode(word)));
-            }
+            let bytecode = match opcodes_struct.opcodes.get(&word[..]) {
+                Some(opcode) => opcode,
+                None => {
+                    if word.contains("0x") {
+                        fixed_byte = dict::add_push(&word);
+                        if fixed_byte.trim() == String::from("404") {
+                            return Err(anyhow::Error::new(InputError::WrongHexLength(
+                                word.to_string(),
+                            )));
+                        }
+                    } else {
+                        return Err(anyhow::Error::new(InputError::UnknownOpcode(word)));
+                    }
 
-            bytes.push(bytecode.to_string());
+                    &fixed_byte[..]
+                }
+            };
+
+            bytecode_final.push_str(bytecode);
         }
     }
 
-    let mut bytecode = String::new();
-
-    for byte in bytes {
-        let mut fixed_byte = byte.to_string();
-        if byte.contains("0x") {
-            fixed_byte = dict::add_push(&byte);
-            if fixed_byte.trim() == String::from("Wrong length") {
-                return Err(anyhow::Error::new(InputError::WrongHexLength(
-                    byte.to_string(),
-                )));
-            }
-        }
-        bytecode.push_str(&fixed_byte);
-    }
-    Ok(bytecode)
+    Ok(bytecode_final)
 }
 
 #[cfg(test)]

@@ -1,4 +1,4 @@
-use std::fs::File;
+use std::fs::{self, File};
 use std::io::prelude::*;
 use std::process::Command;
 
@@ -25,6 +25,8 @@ pub fn test_workflow() {
         .unwrap();
 
     let manual_bytecode = String::from("6001600052734675C7e5BaAFBFFbca748158bEcBA61ef3b0a263602052604060002073b5d85CBf7cB3EE0D56b3bB207D5Fc4B82f43F51155").to_lowercase();
+
+    fs::remove_file("test.mn").unwrap();
 
     assert_eq!(
         String::from_utf8(bytecode.stdout).unwrap().trim(),

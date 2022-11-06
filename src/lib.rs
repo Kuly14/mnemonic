@@ -80,13 +80,13 @@ pub fn read_file(path: &PathBuf) -> Result<String> {
 }
 
 pub fn get_bytecode(content: String) -> Result<String> {
-    let mut lines = content.lines();
+    let lines = content.lines();
 
     let opcodes_struct = Opcodes::new();
 
     let mut bytecode_final = String::new();
 
-    'outer: while let Some(line) = lines.next() {
+    'outer: for line in lines {
         let words = line.split_whitespace().map(|word| word.to_lowercase());
 
         for word in words {
@@ -101,7 +101,8 @@ pub fn get_bytecode(content: String) -> Result<String> {
                 None => {
                     if word.contains("0x") {
                         fixed_byte = dict::add_push(&word);
-                        if fixed_byte.trim() == String::from("404") {
+                        // if fixed_byte.trim() == String::from("404") {
+                        if fixed_byte.trim() == "404" {
                             return Err(anyhow::Error::new(InputError::WrongHexLength(
                                 word.to_string(),
                             )));

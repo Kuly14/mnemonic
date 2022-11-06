@@ -123,7 +123,7 @@ impl Opcodes<'_> {
     }
 }
 
-pub fn add_push(byte: &String) -> String {
+pub fn add_push(byte: &str) -> String {
     let fixed_byte = byte.replace("0x", "");
     let length = fixed_byte.len();
 

@@ -10,9 +10,9 @@ fn main() -> Result<()> {
     let content = mnemonic::read_file(&args.path)?;
     let bytecode = mnemonic::get_bytecode(content)?;
 
-    if args.print == true {
+    if args.print {
         println!("{}", bytecode);
-    } else if !args.destination.is_some() {
+    } else if args.destination.is_none() {
         let file_name = args.path.file_name().unwrap().to_str().unwrap();
         let new_file_name = file_name.replace(".mn", ".txt");
         let mut file = File::create(&new_file_name)?;
